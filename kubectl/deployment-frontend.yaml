@@ -1,23 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: udagram-frontend
+  labels:
+    app: frontend
+  name: frontend
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: udagram-frontend
-      tier: deployment-frontend
+      app: frontend
   template:
     metadata:
       labels:
-        app: udagram-frontend
-        tier: deployment-frontend
+        app: frontend
     spec:
       containers:
-        - image: stevejks/udagram-frontend:v1
-          name: udagram-frontend
-          imagePullPolicy: Always
+        - image: stevejks/udagram-frontend:v1.4
+          name: frontend
           resources:
             requests:
               cpu: "250m"
